@@ -1,0 +1,22 @@
+<mxfile host="app.diagrams.net" modified="2024-06-12T15:55:26.131Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" etag="kom8yQlRGZxw8HXearTu" version="24.5.3" type="device">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel dx="989" dy="509" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="MmBD3X_tBQV6Y8Wt6Qc0-0" value="member" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="160" y="230" width="280" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="MmBD3X_tBQV6Y8Wt6Qc0-1" value="+ id: uint32&lt;div&gt;+ firstName: string&lt;/div&gt;&lt;div&gt;+ lastName: string&lt;/div&gt;&lt;div&gt;+ registrationDate: date&lt;/div&gt;&lt;div&gt;+ membershipType: membershipType_t&lt;/div&gt;&lt;div&gt;+ lastPaymentDate: date&lt;/div&gt;&lt;div&gt;+ membershipStatus: membershipStatus_t&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="MmBD3X_tBQV6Y8Wt6Qc0-0">
+          <mxGeometry y="26" width="280" height="114" as="geometry" />
+        </mxCell>
+        <mxCell id="MmBD3X_tBQV6Y8Wt6Qc0-2" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="MmBD3X_tBQV6Y8Wt6Qc0-0">
+          <mxGeometry y="140" width="280" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="MmBD3X_tBQV6Y8Wt6Qc0-3" value="+ method(type): type&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="MmBD3X_tBQV6Y8Wt6Qc0-0">
+          <mxGeometry y="150" width="280" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
