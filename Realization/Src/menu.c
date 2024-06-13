@@ -188,6 +188,8 @@ uint32_t createMemberMenu(member_t *memberPointer)
     /* Activate membership*/
     memberPointer->membesrhipStatus = ACTIVE; 
 
+    /* ToDo: Find a way to store struct into binary file.*/
+    
     return 0; 
 }
 
