@@ -108,8 +108,6 @@ uint32_t createMemberMenu(member_t *memberPointer)
     } while (false == userInputOk);
 
   
-    
-
 
     /* Ask user for member Last Name*/
     do 
@@ -120,7 +118,7 @@ uint32_t createMemberMenu(member_t *memberPointer)
         fflush(stdin); 
         scanf("%s", &string_buffer);
 
-        printf("First name is: %s do you want to save it? Y/N: ");
+        printf("Last name is: %s do you want to save it? Y/N: ");
         fflush(stdin);
         scanf("%c", &userInput); 
 
@@ -134,7 +132,6 @@ uint32_t createMemberMenu(member_t *memberPointer)
     } while (false == userInputOk);
 
     
-
     /* ToDo: Find a way to save registerDate and lastPaymentDate */
 
     /* Ask user for membership type */
