@@ -47,7 +47,7 @@ static menu_options_t askUserForAction()
     }
     else
     {
-        printf("Option %d, %s selected", menuOption, instructionToStringMap[menuOption - 1] ); 
+        printf("Option %d, %s selected\n", menuOption, instructionToStringMap[menuOption - 1] ); 
     }
 
     return menuOption; 
@@ -71,7 +71,14 @@ menu_options_t gymControllerMenu (void)
 uint32_t createMemberMenu(member_t *memberPointer)
 {
     char string_buffer[MAX_STRING_LENGTH];
-    char userInputOk; 
+    char userInput;
+    bool userInputOk; 
+    
+    if (memberPointer == NULL)
+    {
+        /* Pointer is invalid*/
+        return -1; 
+    }
 
     /* ToDo: Find a way to assign ID to member. */
 
@@ -80,15 +87,24 @@ uint32_t createMemberMenu(member_t *memberPointer)
     do 
     {
         
+        userInputOk = false; 
+
         printf("Input Member's first Name:  "); 
         fflush(stdin); 
         scanf("%s", &string_buffer);
 
         printf("First name is: %s do you want to save it? Y/N: ");
-        fflush(stdin);
-        scanf("%c", &userInputOk); 
 
-    } while (userInputOk != 'Y' && userInputOk != 'y');
+        fflush(stdin);
+        scanf("%c", &userInput); 
+
+        if (userInput == 'Y' || userInput == 'y') 
+        {
+            userInputOk = true; 
+            strcpy(memberPointer->firstName, string_buffer); 
+        }
+
+    } while (false == userInputOk);
 
     printf("Member first name saved."); 
     
@@ -97,16 +113,23 @@ uint32_t createMemberMenu(member_t *memberPointer)
     /* Ask user for member Last Name*/
     do 
     {
-        
+        userInputOk = false;
+
         printf("Input Member's last Name:  "); 
         fflush(stdin); 
         scanf("%s", &string_buffer);
 
         printf("First name is: %s do you want to save it? Y/N: ");
         fflush(stdin);
-        scanf("%c", &userInputOk); 
+        scanf("%c", &userInput); 
 
-    } while (userInputOk != 'Y' && userInputOk != 'y');
+        if (userInput == 'Y' || userInput == 'y') 
+        {
+            userInputOk = true;
+            strcpy(memberPointer->lastName, string_buffer); 
+        }
+
+    } while (false == userInputOk);
 
     printf("Member last name saved.");
 
@@ -115,13 +138,51 @@ uint32_t createMemberMenu(member_t *memberPointer)
 
     /* Ask user for membership type */
 
+    do 
+    {
+        userInputOk = false; 
+
+        printf("Select membership payment plan: Y - Yearly, M - Monthly: "); 
+        fflush(stdin); 
+        scanf("%c", &userInput); 
 
 
+        if (userInput == 'Y' || userInput == 'y') 
+        {
+            memberPointer->membershipType = YEARLY_MEMBERSHIP;
+            userInputOk = true; 
+        }
+        else if (userInput == 'M' || userInput == 'm')
+        {
+            memberPointer->membershipType = MONTHLY_MEMBERSHIP;
+            userInputOk = true; 
+        }
+        else
+        {
+           printf("Invalid selection, please try again \n"); 
+           userInputOk = false; 
+        }   
+
+        if (true == userInputOk)
+        {
+            printf("Membership type is %c do you want to save it? Y/N: ", userInput);
+            fflush(stdin);
+            scanf("%c", &userInput); 
+
+            if (userInput == 'Y' || userInput == 'y') 
+            {
+                userInputOk = true; 
+            }
+            else
+            {
+                userInputOk = false; 
+            }
+        }
 
 
+    } while (false == userInputOk); 
 
-
-    
+    return 0; 
 }
 
 extern uint32_t searchMemberMenu(void){} 

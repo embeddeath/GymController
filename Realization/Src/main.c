@@ -2,6 +2,14 @@
 #include "menu.h"
 #include "member.h"
 
+
+void displayMemberData(member_t* member_ptr)
+{
+    printf("firstName: %s\n", member_ptr->firstName);
+    printf("lastName: %s\n", member_ptr->lastName);
+    printf("membershipType %d\n", member_ptr->membershipType);   
+}
+
 int main ()
 {
 
@@ -20,6 +28,7 @@ int main ()
     switch (menuOption)
     {
         case CREATE_MEMBER: 
+            
             createMemberMenu(&memberBuffer); 
             break; 
         case SEARCH_MEMBER: 
@@ -35,10 +44,8 @@ int main ()
         default: 
             /* Should not get here*/
             break; 
-
-
     }
     
-
+    displayMemberData(&memberBuffer); 
 
 }
