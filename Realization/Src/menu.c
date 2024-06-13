@@ -101,12 +101,13 @@ uint32_t createMemberMenu(member_t *memberPointer)
         if (userInput == 'Y' || userInput == 'y') 
         {
             userInputOk = true; 
-            strcpy(memberPointer->firstName, string_buffer); 
+            strcpy(memberPointer->firstName, string_buffer);
+            printf("Member first name saved.\n");  
         }
 
     } while (false == userInputOk);
 
-    printf("Member first name saved."); 
+  
     
 
 
@@ -127,12 +128,12 @@ uint32_t createMemberMenu(member_t *memberPointer)
         {
             userInputOk = true;
             strcpy(memberPointer->lastName, string_buffer); 
+            printf("Member last name saved.\n");
         }
 
     } while (false == userInputOk);
 
-    printf("Member last name saved.");
-
+    
 
     /* ToDo: Find a way to save registerDate and lastPaymentDate */
 
