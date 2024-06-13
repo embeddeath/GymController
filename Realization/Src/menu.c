@@ -18,7 +18,7 @@ static char instructionToStringMap[MAX_NUMBER_OF_MENU_OPTIONS][MAX_STRING_LENGTH
     "Show all members", 
     "Exit GymController.",
 }; 
-
+    
 static void greet()
 {
     printf("Welcome to GymController software, please pick an option: \n"); 
