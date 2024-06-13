@@ -2,7 +2,7 @@
 #pragma once
 
 #include <stdint.h>
-#include <time.h>
+#include "date.h"
 
 #define MAX_STRING_LENGTH 100
 
@@ -24,9 +24,9 @@ typedef struct member
     uint32_t id; 
     char firstName[MAX_STRING_LENGTH]; 
     char lastName[MAX_STRING_LENGTH]; 
-    /* registrationDate ToDo: find a way to store date in format MM/DD/YYYY*/
+    date_t registrationDate; 
     membership_t membershipType; 
-    /* lastPaymentDate ToDo: find a way to store date in format MM/DD/YYYY*/
+    date_t lastPaymentDate; 
     membershipStatus_t membesrhipStatus; 
 } member_t; 
 

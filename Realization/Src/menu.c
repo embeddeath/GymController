@@ -83,7 +83,6 @@ uint32_t createMemberMenu(member_t *memberPointer)
     /* ToDo: Find a way to assign ID to member. */
 
     /* Ask user for member First Name. */
-
     do 
     {
         
@@ -131,11 +130,9 @@ uint32_t createMemberMenu(member_t *memberPointer)
 
     } while (false == userInputOk);
 
+
     
-    /* ToDo: Find a way to save registerDate and lastPaymentDate */
-
     /* Ask user for membership type */
-
     do 
     {
         userInputOk = false; 
@@ -179,6 +176,17 @@ uint32_t createMemberMenu(member_t *memberPointer)
 
 
     } while (false == userInputOk); 
+
+
+
+    /* Save registration and last payment date to current time. */
+    getDate(&(memberPointer->registrationDate));
+    getDate(&(memberPointer->lastPaymentDate));    
+
+    printf("New member registered: %d/%d/%d/ \n", memberPointer->registrationDate.month, memberPointer->registrationDate.day, memberPointer->registrationDate.year); 
+
+    /* Activate membership*/
+    memberPointer->membesrhipStatus = ACTIVE; 
 
     return 0; 
 }

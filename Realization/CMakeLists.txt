@@ -20,6 +20,7 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user sources here
     Src/main.c
     Src/menu.c
+    Src/date.c
 )
 
 # Add include paths
