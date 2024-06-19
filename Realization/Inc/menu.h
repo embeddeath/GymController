@@ -18,3 +18,5 @@ extern uint32_t createMemberMenu(member_t *memberPointer);
 extern int searchMemberMenu(void); 
 extern int loadMemberMenu(member_t *memberPointer);
 extern int editMemberMenu(member_t *memberPointer); 
+extern void displayMemberData(member_t* member_ptr); 
+extern int showAllMembers(void); 

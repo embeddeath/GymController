@@ -278,6 +278,7 @@ int searchMemberMenu()
         printf("No matches found with first name %s\n", buffer); 
     }
 
+    fclose(file); 
     return 0; 
      
 } 
@@ -381,4 +382,43 @@ int editMemberMenu(member_t *memberPointer)
     
     
     return 0; 
+}
+
+void displayMemberData(member_t* member_ptr)
+{
+    printf("____________________________________\n"); 
+    printf("|   id: %d                          \n", member_ptr->id);
+    printf("|   firstName: %s                   \n", member_ptr->firstName);
+    printf("|   lastName: %s                   \n", member_ptr->lastName);
+    printf("|   membershipType: %d              \n", member_ptr->membershipType);   
+    printf("|   registrationDate: %d/%d/%d      \n",member_ptr->registrationDate.month, member_ptr->registrationDate.day, member_ptr->registrationDate.year); 
+    printf("|   lastPaymentDate: %d/%d/%d       \n",member_ptr->lastPaymentDate.month, member_ptr->lastPaymentDate.day, member_ptr->lastPaymentDate.year); 
+    printf("|   membershipStatus: %d            \n", member_ptr->membesrhipStatus);
+    printf("|___________________________________\n"); 
+}
+
+int showAllMembers(void)
+{
+    FILE* file; 
+    member_t member; 
+
+    /* Open file in read mode*/
+    file = fopen("gymcontrollerdata.dat", "rb");
+    
+    if (file == NULL) 
+    {
+        printf("Unable to open file.\n"); 
+        return -1;
+    }
+
+    system("CLS");
+    /* Read whole file and display member data*/
+    while (feof(file) == 0)
+    {
+        fread(&member, sizeof(member_t), 1, file);
+        displayMemberData(&member); 
+    }
+    
+
+
 }
