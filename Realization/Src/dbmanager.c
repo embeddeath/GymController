@@ -40,6 +40,88 @@ int personWrite (member_t *member_ptr)
     return 0; 
 }
 
+int personEdit (member_t *member_ptr)
+{
+    FILE* file; 
+    member_t memberBuffer; 
+    memberBuffer.id = 0;
+    long savedFilePointerAddress; 
+    bool personFound = false; 
+
+
+    printf("member_ptr.id = %d\n",member_ptr->id); 
+
+    /* Open file in read mode*/
+    file = fopen("gymcontrollerdata.dat", "rb");
+    
+
+    if (file == NULL) 
+    {
+        printf("Unable to open file.\n"); 
+        return -1;
+    }
+ 
+    
+    /* Position the file pointer to the proper index we want to edit. */
+    while (false == personFound && feof(file) == 0)
+    {
+
+         
+        size_t num_read = fread(&memberBuffer, sizeof(member_t), 1, file);
+
+        /* Abort read operation if it fails. */
+        if (num_read != 1) { 
+            fclose(file);
+            return -1;
+        }
+        
+        /* Signal that we found a match */
+        if (memberBuffer.id == member_ptr->id)
+        {
+            personFound = true;
+            
+            printf("PersonFound\n"); 
+        }
+        printf("member_ptr->id = %d | memberBuffer.id = %d\n",member_ptr->id, memberBuffer.id);
+    }
+    
+    if (true == personFound)
+    {
+        
+        /* ToDo: Ask teacher if this is the proper way to index a binary file. */
+
+        /* We have found the person, save current */
+        savedFilePointerAddress = ftell(file);
+        fclose(file);
+        fopen("gymcontrollerdata.dat", "r+b");
+        fseek(file, savedFilePointerAddress - sizeof(member_t), SEEK_SET); 
+
+        
+
+        size_t num_written = fwrite(member_ptr, sizeof(member_t), 1, file);
+
+        if (num_written != 1) { 
+            fclose(file);
+            return 1;
+        }
+        else
+        {
+            printf("Information was updated successfully.\n"); 
+            fclose(file); 
+        }
+
+    }
+    else
+    {
+        printf("Error, person id not found. ");
+        fclose(file); 
+        return -1; 
+    }
+                
+    
+
+    return 0; 
+}
 
 int personRead (member_t *member_ptr)
 {

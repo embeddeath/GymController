@@ -44,9 +44,11 @@ int main ()
                 searchMemberMenu(); 
                 break; 
             case LOAD_MEMBER: 
-                if ( 0 == loadMemberMenu(&memberBufferTest))
+                /* Verify if member exists.*/
+                if (0 == loadMemberMenu(&memberBufferTest))
                 {
                     displayMemberData(&memberBufferTest);
+                    editMemberMenu(&memberBufferTest); 
                 }
                 
                 break; 
