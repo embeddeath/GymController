@@ -15,6 +15,6 @@ typedef enum
 extern menu_options_t gymControllerMenu(void); 
 
 extern uint32_t createMemberMenu(member_t *memberPointer); 
-extern uint32_t searchMemberMenu(void); 
+extern int searchMemberMenu(void); 
 extern int loadMemberMenu(member_t *memberPointer);
 extern int editMemberMenu(member_t *memberPointer); 

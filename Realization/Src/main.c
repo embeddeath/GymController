@@ -53,6 +53,7 @@ int main ()
                 
                 break; 
             case SHOW_ALL_MEMBERS: 
+                    
                 break;
             case EXIT: 
                 break; 

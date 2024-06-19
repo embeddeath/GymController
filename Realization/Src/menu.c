@@ -91,7 +91,7 @@ static bool promptForName(member_t *memberPointer, member_name_t name_type_opt)
             strcpy(memberPointer->lastName, string_buffer);
         }
         
-        printf("Member % saved.\n", userFdbkString);  
+        printf("Member %s saved.\n", userFdbkString);  
     }
     
     return userInputOk; 
@@ -189,7 +189,6 @@ menu_options_t gymControllerMenu (void)
 uint32_t createMemberMenu(member_t *memberPointer)
 {
     char string_buffer[MAX_STRING_LENGTH];
-    char userInput;
     bool userInputOk; 
     
     if (memberPointer == NULL)
@@ -238,9 +237,49 @@ uint32_t createMemberMenu(member_t *memberPointer)
     return 0; 
 }
 
-uint32_t searchMemberMenu(void)
+int searchMemberMenu()
 {
+    FILE* file; 
+    char buffer[MAX_STRING_LENGTH];
+    member_t member; 
+    bool matchFound = false; 
 
+    printf("Enter first name to search in gym database: "); 
+    fflush(stdin); 
+    scanf("%s", &buffer);
+
+    /* Open file in read mode*/
+    file = fopen("gymcontrollerdata.dat", "rb");
+
+    if (file == NULL) 
+    {
+        printf("Unable to open file.\n"); 
+        return -1;
+    }
+
+    /* Read whole file and search for matches in first name*/
+    while (feof(file) == 0 && false == matchFound )
+    {
+        fread(&member, sizeof(member_t), 1, file);
+
+        /* Compare input string with db entry*/
+        if (strcmp(member.firstName, buffer) == 0)
+        {
+            matchFound = true; 
+        }
+    }
+
+    if (matchFound = true)
+    {
+        printf("Member %s %s found with id %d\n", member.firstName, member.lastName, member.id); 
+    }
+    else
+    {
+        printf("No matches found with first name %s\n", buffer); 
+    }
+
+    return 0; 
+     
 } 
 int loadMemberMenu(member_t *member_ptr)
 {
