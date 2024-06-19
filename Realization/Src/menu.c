@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "menu.h"
 #include "member.h"
+#include "dbmanager.h"
 #include <stdint.h>
 #include <string.h>
 #include "stdbool.h"
@@ -81,6 +82,7 @@ uint32_t createMemberMenu(member_t *memberPointer)
     }
 
     /* ToDo: Find a way to assign ID to member. */
+    memberPointer->id = (findLastUsedId() + 1);  
 
     /* Ask user for member First Name. */
     do 
@@ -189,9 +191,32 @@ uint32_t createMemberMenu(member_t *memberPointer)
     memberPointer->membesrhipStatus = ACTIVE; 
 
     /* ToDo: Find a way to store struct into binary file.*/
-    
+    personWrite(memberPointer);
+
     return 0; 
 }
 
-extern uint32_t searchMemberMenu(void){} 
-extern uint32_t loadMemberMenu(void){}
+uint32_t searchMemberMenu(void)
+{
+
+} 
+int loadMemberMenu(member_t *member_ptr)
+{
+    uint32_t id; 
+    printf("Enter member ID for edition. \n"); 
+    fflush(stdin); 
+    scanf("%d", &id); 
+
+    if (true == getMemberDataById(member_ptr, id))
+    {
+        printf("Member %d loaded\n", id);
+        return 0; 
+    }
+    else
+    {
+        printf("Member %d does not exist\n");
+        return -1;  
+    }
+    
+   
+}

@@ -2,6 +2,10 @@
     "files.associations": {
         "stdio.h": "c",
         "time.h": "c",
-        "stddef.h": "c"
+        "stddef.h": "c",
+        "stdbool.h": "c",
+        "dbmanager.h": "c",
+        "stdlib.h": "c",
+        "member.h": "c"
     }
 }

@@ -6,6 +6,7 @@
 
 #define MAX_STRING_LENGTH 100
 
+#define DUMMY_STRUCT_ID_PATTERN 0xDEADBEEF
 
 typedef enum
 {

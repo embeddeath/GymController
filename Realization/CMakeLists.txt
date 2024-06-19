@@ -21,6 +21,7 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     Src/main.c
     Src/menu.c
     Src/date.c
+    Src/dbmanager.c
 )
 
 # Add include paths
