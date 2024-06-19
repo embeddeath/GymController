@@ -287,3 +287,44 @@ int getMemberDataById (member_t* member_ptr, uint32_t id)
 
     return match; 
 }
+
+int searchMemberByFirstName(char* buffer) 
+{
+    FILE* file; 
+    member_t member; 
+    bool matchFound = false; 
+
+ /* Open file in read mode*/
+    file = fopen("gymcontrollerdata.dat", "rb");
+
+    if (file == NULL) 
+    {
+        printf("Unable to open file.\n"); 
+        return -1;
+    }
+
+    /* Read whole file and search for matches in first name*/
+    while (feof(file) == 0 && false == matchFound )
+    {
+        fread(&member, sizeof(member_t), 1, file);
+
+        /* Compare input string with db entry*/
+        if (strcmp(member.firstName, buffer) == 0)
+        {
+            matchFound = true; 
+        }
+    }
+
+    if (matchFound = true)
+    {
+        printf("Member %s %s found with id %d\n", member.firstName, member.lastName, member.id); 
+        return 0; 
+    }
+    else
+    {
+        printf("No matches found with first name %s\n", buffer);
+        return -1; 
+    }
+
+    fclose(file); 
+}

@@ -239,46 +239,14 @@ uint32_t createMemberMenu(member_t *memberPointer)
 
 int searchMemberMenu()
 {
-    FILE* file; 
+    
     char buffer[MAX_STRING_LENGTH];
-    member_t member; 
-    bool matchFound = false; 
+
 
     printf("Enter first name to search in gym database: "); 
     fflush(stdin); 
     scanf("%s", &buffer);
-
-    /* Open file in read mode*/
-    file = fopen("gymcontrollerdata.dat", "rb");
-
-    if (file == NULL) 
-    {
-        printf("Unable to open file.\n"); 
-        return -1;
-    }
-
-    /* Read whole file and search for matches in first name*/
-    while (feof(file) == 0 && false == matchFound )
-    {
-        fread(&member, sizeof(member_t), 1, file);
-
-        /* Compare input string with db entry*/
-        if (strcmp(member.firstName, buffer) == 0)
-        {
-            matchFound = true; 
-        }
-    }
-
-    if (matchFound = true)
-    {
-        printf("Member %s %s found with id %d\n", member.firstName, member.lastName, member.id); 
-    }
-    else
-    {
-        printf("No matches found with first name %s\n", buffer); 
-    }
-
-    fclose(file); 
+    searchMemberByFirstName(&buffer);
     return 0; 
      
 } 
@@ -412,13 +380,25 @@ int showAllMembers(void)
     }
 
     system("CLS");
+
     /* Read whole file and display member data*/
-    while (feof(file) == 0)
+    bool done = false; 
+
+    while (false == done)
     {
         fread(&member, sizeof(member_t), 1, file);
-        displayMemberData(&member); 
+        
+        if (feof(file) == 0)
+        {
+            displayMemberData(&member); 
+        }
+        else
+        {
+            done = true; 
+        }
+
     }
     
-
+    return 0; 
 
 }
