@@ -315,7 +315,7 @@ int searchMemberByFirstName(char* buffer)
         }
     }
 
-    if (matchFound = true)
+    if (true == matchFound)
     {
         printf("Member %s %s found with id %d\n", member.firstName, member.lastName, member.id); 
         return 0; 
